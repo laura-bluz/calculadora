@@ -1,13 +1,54 @@
 * {
-    text-align: center;
-    font-size: 16px;
-  }
+  text-align: center;
+  font-size: 16px;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+#input {
+  width: 100vw;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   
-  h1 {
-    font-size: 30px;
-  }
   
+  #select {
+    margin-right: 10px;
+  }
+}
+
+.inputNumber {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+
+
   .number {
     font-size: 15px;
-    width: 10%;
+    width: 60px;
+    margin-right: 10px;
+    
   }
+
+  .number, p {
+    width: 150px;
+    font-size: 40px;
+  }
+
+  p {
+    margin-left: 10px;
+  }
+
+  #select {
+    width: 60px;
+    font-size: 40px;
+  }
+
+  button {
+    width: 60px;
+    font-size: 40px;
+  }
+}

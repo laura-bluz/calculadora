@@ -32,34 +32,37 @@ function Calc() {
 
         const dados = Object.fromEntries(form);
         console.log(dados);
-      
+
         setResultado(enviar(dados.operacao, dados.valor1, dados.valor2));
     }
 
 
     return (
         <>
-            <h1>Selecione a operação desejada:</h1>
+            <h1>Calculadora</h1>
 
             <div id="input">
                 <form onSubmit={handleSubmit}>
-                    <select id="select" name='operacao' defaultValue={estado} onChange={e => setEstado(e.target.value)}>
-                        <option value="+">+</option>
-                        <option value="-">-</option>
-                        <option value="*">*</option>
-                        <option value="/">/</option>
-                        <option value="%">%</option>
-                    </select>
 
-                    <br></br><br></br>
+                    <br></br>
 
-                    <input className='number' name='valor1' id='number1' type='text'></input>
-                    <h1>{estado}</h1>
-                    <input className='number' name='valor2' id='number2' type='number'></input>
-                    <br></br><br></br>
-                    <button type='submit'>=</button>
+                    <div className='inputNumber'>
+                        <input className='number' name='valor1' id='number1' type='text'></input>
+                        {/* <h1>{estado}</h1> */}
+                        <select id="select" name='operacao' defaultValue={estado} onChange={e => setEstado(e.target.value)}>
+                            <option value="+">+</option>
+                            <option value="-">-</option>
+                            <option value="*">*</option>
+                            <option value="/">/</option>
+                            <option value="%">%</option>
+                        </select>
+
+                        <input className='number' name='valor2' id='number2' type='number'></input>
+                        <br></br><br></br>
+                        <button type='submit'>=</button>
+                        <p>{resultado}</p>
+                    </div>
                 </form>
-                <p>{resultado}</p>
             </div>
         </>
     );
