@@ -1,3 +1,4 @@
+import { click } from "@testing-library/user-event/dist/click";
 import { useState } from "react";
 
 function enviar(estado, valor1, valor2) {
@@ -40,6 +41,7 @@ function porCento2(n1, n2) {
     return resultado3;
 }
 
+
 function Calc() {
     const [estado, setEstado] = useState('+');
     let [resultado, setResultado] = useState(0);
@@ -53,17 +55,18 @@ function Calc() {
         let form = new FormData(e.target);
 
         const dados = Object.fromEntries(form);
-        console.log(dados)
 
-        if (!(dados.valor1 === '' || dados.valor2 === '')) {
+        
+        if (!(dados.valor1 === '' || dados.valor2 === '') && estadoControle === 0) {
             setResultado(enviar(dados.operacao, dados.valor1, dados.valor2));
         }
-        if (!(dados.numero1 === '' || dados.numero2 === '')) {
+        if (!(dados.numero1 === '' || dados.numero2 === '') && estadoControle === 1) {
             setResultado2(porCento(dados.numero1, dados.numero2));
         }
-        if (!(dados.numero3 === '' || dados.numero4 === '')) {
+        if (!(dados.numero3 === '' || dados.numero4 === '') && estadoControle === 2) {
             setResultado3(porCento2(dados.numero3, dados.numero4));
         }
+
     }
 
 
@@ -87,15 +90,14 @@ function Calc() {
 
                         <input className='number' name='valor2' id='number2' type='number'></input>
                         <br></br><br></br>
-                        <button type='submit'>=</button>
+                        <button onClick={() => {setEstadoControle(0)}} name='btnSelect' type='submit'>=</button>
                         <p>{resultado}</p>
                     </div>
-
                     <div className='inputPorCento'>
-                        <p>Quanto é <input name='numero1' type='number'></input>% de <input name='numero2' type='number'></input>?<button type='submit'>=</button></p>
+                        <p>Quanto é <input name='numero1' type='number'></input>% de <input name='numero2' type='number'></input>?<button onClick={() => {setEstadoControle(1)}} name='btnPorCento1' type='submit'>=</button></p>
                         <p>{resultado2}</p>
 
-                        <p>O valor <input name='numero3' type='number'></input>é qual porcentagem de <input name='numero4' type='number'></input>?<button type='submit'>=</button></p>
+                        <p>O valor <input name='numero3' type='number'></input>é qual porcentagem de <input name='numero4' type='number'></input>?<button onClick={() => {setEstadoControle(2)}} name='btnPorCento2' type='submit'>=</button></p>
                         <p>{resultado3}%</p>
                     </div>
                 </form>
